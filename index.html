@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little World For You ✦</title>
+
+<style>
+
+/* =========================
+   BASIC
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 50% 20%,
+        #252b5a 0%,
+        #11162f 45%,
+        #070a19 100%);
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.stars {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    animation:
+        twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+
+    0%,100% {
+        opacity: .2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+#intro {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+
+    padding: 30px;
+}
+
+
+.intro-box {
+
+    max-width: 700px;
+
+}
+
+
+.small-text {
+
+    letter-spacing: 6px;
+
+    font-size: 13px;
+
+    opacity: .6;
+
+    margin-bottom: 25px;
+
+}
+
+
+h1 {
+
+    font-size: clamp(45px, 8vw, 90px);
+
+    font-weight: normal;
+
+    line-height: .95;
+
+    margin: 0;
+
+}
+
+
+.subtitle {
+
+    margin-top: 30px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16px;
+
+    opacity: .7;
+
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.enter-button {
+
+    margin-top: 40px;
+
+    padding: 15px 35px;
+
+    border-radius: 50px;
+
+    border: 1px solid rgba(255,255,255,.4);
+
+    background: rgba(255,255,255,.08);
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.enter-button:hover {
+
+    background: rgba(255,255,255,.2);
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================
+   WORLD
+========================= */
+
+#world {
+
+    display: none;
+
+    min-height: 100vh;
+
+    text-align: center;
+
+    padding: 100px 25px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.moon {
+
+    width: 140px;
+    height: 140px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #fff6c9;
+
+    box-shadow:
+        0 0 25px #fff6c9,
+        0 0 70px rgba(255,246,201,.4);
+
+}
+
+
+#world h2 {
+
+    font-size: clamp(40px, 7vw, 75px);
+
+    font-weight: normal;
+
+    margin-top: 50px;
+
+}
+
+
+#world p {
+
+    max-width: 600px;
+
+    margin: 25px auto;
+
+    line-height: 1.8;
+
+    font-family: Arial, sans-serif;
+
+    opacity: .75;
+
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+
+    max-width: 900px;
+
+    margin: 100px auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px,1fr));
+
+    gap: 25px;
+
+}
+
+
+.card {
+
+    padding: 35px 20px;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:
+        blur(10px);
+
+    cursor: pointer;
+
+    transition: .4s;
+
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-8px)
+        rotate(-1deg);
+
+}
+
+
+.card-icon {
+
+    font-size: 35px;
+
+}
+
+
+.card h3 {
+
+    font-size: 25px;
+
+    font-weight: normal;
+
+}
+
+
+.message {
+
+    display: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    opacity: .8;
+
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+
+    margin-top: 150px;
+
+}
+
+
+.envelope {
+
+    width: 220px;
+
+    height: 140px;
+
+    margin: 40px auto;
+
+    background: #eadbc0;
+
+    color: #493b2c;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 8px;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.4);
+
+    transition: .4s;
+
+}
+
+
+.envelope:hover {
+
+    transform:
+        rotate(-3deg)
+        scale(1.05);
+
+}
+
+
+.letter-button {
+
+    padding: 15px 30px;
+
+    border-radius: 50px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- STARS -->
+
+<div class="stars" id="stars"></div>
+
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section id="intro">
+
+    <div class="intro-box">
+
+        <div class="small-text">
+            A LITTLE SOMETHING
+        </div>
+
+
+        <h1>
+            I made you<br>
+            a tiny world.
+        </h1>
+
+
+        <p class="subtitle">
+            Take your time.<br>
+            There's something waiting for you.
+        </p>
+
+
+        <button
+            class="enter-button"
+            id="enterButton">
+
+            ✦ Enter ✦
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WORLD
+========================= -->
+
+<section id="world">
+
+
+    <div class="moon"></div>
+
+
+    <p>
+        once upon a time...
+    </p>
+
+
+    <h2>
+        someone wonderful was born.
+    </h2>
+
+
+    <p>
+        And today seemed like a pretty good day
+        to remind them just how much they mean.
+    </p>
+
+
+    <h2>
+        Happy Birthday, EIRA ♡
+    </h2>
+
+
+
+    <!-- CARDS -->
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🌙
+            </div>
+
+            <h3>
+                A little thought
+            </h3>
+
+            <div class="message">
+
+                You make ordinary moments
+                feel a little less ordinary.
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                ⭐
+            </div>
+
+            <h3>
+                A tiny wish
+            </h3>
+
+            <div class="message">
+
+                I hope this year gives you
+                more reasons to smile
+                than you can count.
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🌷
+            </div>
+
+            <h3>
+                Something important
+            </h3>
+
+            <div class="message">
+
+                Don't forget how many
+                wonderful things are
+                still waiting for you.
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- LETTER -->
+
+    <div class="letter">
+
+
+        <p>
+            And finally...
+        </p>
+
+
+        <h2>
+            I wrote something for you.
+        </h2>
+
+
+        <div class="envelope">
+
+            ✉
+
+        </div>
+
+
+        <button
+            class="letter-button"
+            id="letterButton">
+
+            Open my letter →
+
+        </button>
+
+
+    </div>
+
+
+</section>
+
+
+
+<script>
+
+/* =========================
+   CREATE STARS
+========================= */
+
+const stars =
+    document.getElementById("stars");
+
+
+for (let i = 0; i < 120; i++) {
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+
+}
+
+
+
+/* =========================
+   ENTER BUTTON
+========================= */
+
+const enterButton =
+    document.getElementById("enterButton");
+
+const intro =
+    document.getElementById("intro");
+
+const world =
+    document.getElementById("world");
+
+
+enterButton.addEventListener("click", function() {
+
+    intro.style.display = "none";
+
+    world.style.display = "block";
+
+    window.scrollTo(0, 0);
+
+});
+
+
+
+/* =========================
+   CARDS
+========================= */
+
+const cards =
+    document.querySelectorAll(".card");
+
+
+cards.forEach(function(card) {
+
+    card.addEventListener("click", function() {
+
+        const message =
+            card.querySelector(".message");
+
+
+        if (message.style.display === "block") {
+
+            message.style.display = "none";
+
+        }
+
+        else {
+
+            message.style.display = "block";
+
+        }
+
+    });
+
+});
+
+
+
+/* =========================
+   LETTER
+========================= */
+
+const letterButton =
+    document.getElementById("letterButton");
+
+
+letterButton.addEventListener("click", function() {
+
+    window.open(
+        "https://gardenletters.online/?garden=77777",
+        "_blank"
+    );
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
